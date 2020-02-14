@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+    <head></head>
+    <title>2020-1-25網頁開發筆記</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="網頁，開發，學習，筆記">
+    <meta name="description" content="這是2020-1-25的網頁開發學習歷程筆記">
+    <link href="CSS/index.css" rel=stylesheet media="all">
+    <body>
+        <img src="img/index.jpg" height="300" width="700" alt="首頁圖片">
+        <h1>2020-1-25網頁開發學習筆記CSS基本知識1-<br>選擇器，background，border，文本修飾</h1>
+        <div>
+        <h2>綜合筆記</h2>
+        <h3>CSS屬性的基本知識</h3>
+        <h4>1.CSS的兩種基本形式</h4>
+        <table>
+            <tr>
+                <th>樣式</th><th>寫法</th><th>舉例</th><th>備註</th>
+            </tr>
+            <tr><td>屬性簡寫法(shorthand)</td><td>1.用空格區隔即可加入多種屬性值，將其整合在同一行<br>例如:border:red 5px dotted;即包含顏色粗細樣式等屬性，之間以空格區分即可(有些省略沒打的屬性，系統會以預設值帶入)</td><td>其他如:background，font等都是</td><td>有些樣式內屬性有順序規則，有些則無如:font:size family(至少要有此二屬性，且順序不可換)<br>加入其他屬性如:font:weight style size family<br>(前二者可以互換寫成:font:style weight size family)，注意後二者永遠都是在後面且順序不變<br>另外還可以在style+/line-height，即可以調整行高，如:font:weight style size/line-height family。</td></tr>
+            <tr><td>單一寫法</td><td>只能加入一個屬性<br>例如:background-color:red<td>border-color等</td><td>無</td></tr>
+        </table>
+        <p>**在寫CSS時最好以複合寫法為主，作為整個大方向，若有需要微調的時候再特別指定單一式屬性的輸入法</p>
+        <p>***css中的優先順序為:後寫的大於先寫的(即在同一個元素中，同一屬性出現不同值時，系統會以後寫者為優先判定)</p>
+        <img src="img/cssSpecifity.jpeg" alt="CSS選擇器的明確度(specifity)" width="500px" height="300px">
+        <p>注意:有一種方式可以忽視上述規則，即加入"!important"，如:color: red !important(以空格區開)，這是最後手段，切勿胡亂使用，以免打破規則!<br>因為若要再破解!important就得在值後面再加!important，就本末倒置了</p>
+        <h4>2.CSS的基本寫法中，要記得各個屬性之間是以分號(;)區隔，且屬性和屬性間有多少空格都無妨</h4>
+        <p>例如:h1{color: crimson;font-size: 50px;text-align: center}</p>
+        <h4>3.CSS中顏色表達的三種方式:</h4>
+        <table>
+            <tr><th>顏色寫法</th><th>範例</th><th>備註</th></tr>
+            <tr><td>16進位制</td><td>#123456</td><td>16進位即:0123456789abcdef。<br>從0~F，0代表亮度最小，F代表亮度最大。<br>所以#000000就是黑色；#FFFFFF就是白色</td></tr>
+            <tr><td>RGB表示法</td><td>rgb(0,0,0)</td><td>數值範圍從:0~255。<br>0代表亮度最小，255代表亮度最大。<br>所以rgb(0,0,0)就是黑色</td></tr>
+            <tr><td>單詞法</td><td>red</td><td>直接輸入顏色的名稱，可以查詢網站<br>https://www.ebaomonthly.com/window/photo/lesson/colorList.htm<br>或者直接搜尋"HTML顏色代碼"</td></tr>
+        </table>
+        <p><strong>**若看到喜歡的顏色，不知道如何表達，可以先將螢幕截圖，再透過"PS"軟體的吸管工具得知色彩值!</strong></p>
+        <h4>4.span標籤的用法</h4>
+        <p>(1)這個標籤是專門用來修飾"<span>文本</span>"的標籤，例如一段文字中想把特定文字上顏色或粗細等，就可以在<ins>Html</ins>中使用span標籤包起來，再用CSS進行修飾。</p>
+        <p>例如在html中:&lt;p&gt;這是一個&lt;span&gt;全新&lt;/span&gt;的時代&lt;/p&gt;，就可以針對"全新"兩個字做設定</p>
+        <h4>5.套用CSS樣式的三種方式(選擇器的使用方式)</h4>
+        <table>
+            <tr><th>選擇器樣式</th><th>使用範例</th></tr>
+            <tr><td>簡易選擇</td><td>如:h1{  }</td></tr>
+            <tr><td>子孫選擇</td><td>如:#id ul li{  }<br>h1 span{  }<br>皆以空格區分</td></tr>
+            <tr><td>群組選擇</td><td>如:h1,h2,h3{  }<br>用逗號區隔開來</td></tr>
+        </table>
+            <p>***更多詳細的選擇器樣式，如父子選擇 相鄰選擇 通用選擇等等...將在後面提到***</p>
+        <h4>6.id選擇器和class選擇器</h4>
+            <form>
+            <table>
+                <tr><th>CSS選擇器</th><th>寫法</th><th>備註</th></tr>
+                <tr><td>id選擇器</td><td>html中:id="設定名稱"<br>css中:#設定名稱{ }</td><td><select size=3><option>1.一個id只能被用一次</option><option>2.命名時起首不能為數字(如2id)</option><option>3.寫法推薦:search_small_buttom(用-也可以)</option></select></td></tr>
+                <tr><td>class選擇器</td><td>html中:class="設定名稱"<br>css中:.設定名稱{ }<br><br></td><td><select size=4><option>1.class的名稱可以在html中被重複使用(例如div用一次p也可以再使用等等)</option><option>2.html中可以為某區塊添加多個class樣式，例如為&lt;div class="style1 style2"，即可套用多種樣式進去(可無限增加)</option><option>3.順序級:看哪個樣式在CSS中先寫即為優先(不同於CSS屬性的順序級)</option><option>4.可針對某特定標籤中的class進行選擇:如p.box{ }  (注1)</option></select></td></tr>
+            </table>
+            </form>
+        <p><strong>注1</strong>:html情境如下:<br>&lt;div class="box"&gt;....&lt;/div&gt;<br>&lt;div class="box"&gt;....&lt;/div&gt;<br>&lt;p class="box"&gt;....&lt;/p&gt;<br>則可以針對段落p進行細部修改，在CSS中寫 p.box{ }</p><br>
+        <h3>CSS各種重要屬性</h3>
+        <h4>1.背景background</h4>
+            <table>
+                <tr><th>樣式</th><th>功能</th><th>寫法</th></tr>
+                <tr><td>background-color</td><td>背景顏色</td><td>background-color:red</td></tr>
+                <tr><td>background-image</td><td>背景圖片</td><td>background-image:url(圖片地址)<br>默認值將會水平和垂直撲滿圖片，所以會有很多張</td></tr>
+                <tr><td>background-repeat</td><td>背景圖的鋪陳方式</td><td>background-repeat(XY軸一起設定)<br>background-repeat:repeat-x(X軸平舖)<br>background-repeat:repeat-y(Y軸平舖)<br>background-repeat:no-repeat(都不平鋪，故只會有一張)-->應該比較常用</td></tr>
+                <tr><td>background-position</td><td>圖片位置</td><td>background-position:x y。以XY軸來設定，並以正負值表示左右或上下(px和%都可)；或者可在x軸輸入單詞left right center，Y軸輸入top center bottom。<br>background-position:0 0(即在左上角)<br>background-position:left top(亦左上角)</td></tr>
+                <tr><td>background-attachment</td><td>隨滾動條移動的方式</td><td>background-attachment:scroll(照元隨著滾動條移動；並且位置是根據當前選擇的區塊作偏移)<br>background-attachment:fixed(圖片被固定，不會隨滾動條移動；並且位置是根據整個瀏覽器偏移)<br>詳細見<strong>注2</strong></td></tr>
+            </table>
+            <p><strong>注2</strong>:scroll和fixed的位置設定範圍依據見下圖</p>
+            <img src="img/background-attachment.jpg" alt="attachment的scroll和fixed的不同在哪" width=700 heigh=300>
+        <h4>2.邊框</h4>
+            <ul>
+                <li>透明邊框:輸入<strong>border-color:transparent</strong>；或border:transparent 5px solid。(要在某一邊上做透明只要先指定上下左右即可)</li>
+            </ul>
+        <h4>3.文本修飾</h4>
+            <ul>
+                <li><dl><dt>font-family字體設定:</dt><dd>font-family:標楷體,宋體,新細明體;(使用逗號區隔代表是字體的替代方案，可防止該電腦上無某字體時，可以設定成其他替代字體)</dd></dl></li>
+                <li><dl><dt>texe-decoration文本修飾:</dt><dd><table><tr><th>屬性值</th><th>效果</th><th>備註</th></tr>
+                    <tr><td>underline</td><td id=a>為文字加上底線</td><td rowspan="3">若要一次加入多種屬性，直接以空格隔開輸入即可<br>例如:text-decoration:overline underline line-through</td></tr><tr><td>overline</td><td id=b>為文字加上頂線</td></tr><tr><td>line-throught</td><td id=c>為文字加刪除線</td></tr></table></dd></dl></li>
+                <li><dl><dt>texe-transform大小寫:</dt><dd><table><tr><th>屬性值</th><th>效果</th><th>備註</th></tr>
+                    <tr><td>lowercase</td><td>小寫字母</td><td rowspan="3">對英文等有大小寫的字體才有用</td></tr><tr><td>uppercase</td><td>大寫字母</td></tr><tr><td>capitalize</td><td>每個字的首字大寫</td></tr></table></dd></dl></li>
+                <li><dl><dt>text-indent首行縮進(空兩格)的方法:</dt><dd>text-indent:32px(預設每個字是16px，故空兩格用32px；若自己預設大小為18px,則空兩格為36px)<br><strong>**注意:若不想每次都要算2倍是多少，則使用"相對數值em"，故空兩格即為text-indent:2em</strong></dd></dl></li>
+                <li><dl><dt>text-align文本對齊:</dt><dd>text-align:left(或者right，center)；要使左右同時對齊輸入text-align:justify</dd></dl></li>
+                <li><dl><dt>line-height行高:</dt><dd>line-height:1(即16px；2即32px依此類推)。直接輸入px數值也行，例如:line-height:35px。<br><strong>**注意:行高的定義即是上邊距到下邊距之間的高度(兩邊距間還夾了字體的大小在內)</strong></dd></dl></li>
+                <li><dl><dt>letter-spacing中文字間距；word-spacing英文單字間距:</dt><dd>數值只能輸入px和em</dd></dl></li>
+                <li><dl><dt>word-break強制換行；word-wrap包裹換行:</dt><dd>word-break:break-all(即不管英字或數字到哪，需要換行就會直接斷掉換下一行，如apple可能直接段開成app，le在下一行)<br>word-wrap:break-word(會為了單詞完整性而整個字換到下一行，造成留白)</dd></dl></li><img src="img/word-break&word-wrap.jpg" alt="強制換行與包裹換行">
+                
+            </ul>
+        <h4>4.盒子特性補充</h4>
+            <ul>
+                <li>**box-sizing(盒尺寸)，通常設置區塊的寬和高時是作用在content上的，即默認值為content-box(就是整個顯示出來的寬和高都是內容部分)；<br>若想要把寬和高也分給padding及border的話，可以改成box-sizing:border-box即可。</li>
+                <li>Padding不能輸入負值(即內容直接接邊框，故最小值只有0沒)；但是Margin可以輸入負值(即區塊和區塊之間是可以重疊的)</li>
+                <li>Margin的疊加，只會取最大值者疊加(例如div1的M值是40px;div2的M值是30px，則此兩區塊上下的間距是為40px)</li>
+                <li>嵌套區塊時，不設置寬和高時，子區塊的寬高會自動繼承父區塊的寬高，並且，設置子區塊的P值或M值或邊框時，都會自動計算，因此不會產生子區塊設置了P值或M值或邊框時，整個區塊跑出去的情況</li>
+                <li>Margin-Top的問題:只會發生在區塊嵌套的結構中。詳解如下圖</li>
+                <img src="img/margin-topsolution.jpg" alt="margin-top的問題及解決方案">
+                <li>Margin的左右AUTO值(可以做出區塊居中的效果)</li>
+                <img src="img/marginauto.jpg" alt="margin的左右auto值">
+                
+            </ul>
+        </div>
+        <div>
+        <h2>提問筆記</h2>
+        <h3>CSS基本</h3>
+        <ul>
+            <li>CSS屬性值的優先順序是?</li><input type="text">
+            <li>font這個屬性的寫法，最少要包含哪兩個屬性，順序為何?還可以加入那些?</li><input type="text">
+            <li>判別這個語法中所有屬性值的屬性名稱為?順序可以變嗎?background:#fbf9cc url(img/bg.png) repeat-x right top；若有些省略沒打，系統如何反應?</li><input type="text">
+            <li>要針對"文本"進行特殊設置，可以使用什麼標籤?</li><input type="text">
+            <li>在以下情境中，我要如何只對P進行CSS設定?<br>&lt;div class="box"&gt;....&lt;/div&gt;<br>&lt;div class="box"&gt;....&lt;/div&gt;<br>&lt;p class="box"&gt;....&lt;/p&gt;</li><input type="text">
+            <li>最後，相隔一段時間後，瀏覽一下上面的基本綜合筆記吧!</li>
+        </ul>
+        <h3>CSS重要屬性</h3>
+            <ul>
+                <li>如何為某個區塊加上一個背景圖片?有那些鋪陳方式和位置設定?attachment屬性中的scroll和fixted值有何差別?</li><textarea cols="25px" rows="10px"></textarea>
+                <li>用邊框transparent功能做一個實心正方形；做一個向上的三角形；三角形要越大，關係的值是height還是width?</li>
+                <li>text-decoration中若要同時擁有頂線底線刪除線，如何輸入呢?</li><input type="text">
+                <li>如何設定一段英文字為首字大寫?</li><input type="text">
+                <li>如何使一個文章段落首行縮進(空兩格)?數值輸入px和em有何區別?</li><input type="text">
+                <li>如何使整個文體對齊?又如何可以左右都對齊?</li><input type="text">
+                <li>行高是指哪裡到哪裡?如何輸入數值?</li><input type="text">
+                <li>中文字間距怎麼調?英文的間距又如何調?</li><input type="text">
+                <li>英文和數字為何有時不會自動換行?又有什麼換行的方式呢?</li><input type="text">
+                <li>Padding和Margin哪一個可以輸入負值(輸入負值會怎樣)?</li><input type="text">
+                <li>兩個區塊的Margin疊加是取最大值還是最小值?</li><input type="text">
+                <li>為何我把子區塊設置邊框後，整個子區塊都跑到外邊去了?</li><input type="text">
+                <li>margin-top有什麼問題?</li><input type="text">
+                <li>要如何把div區塊居中呢?</li><input type="text">
+                <li>什麼是box-sizing?</li><input type="text">
+            </ul>
+        </div>
+        <div>
+        <h2>解答區</h2>
+        <h3>CSS基本區解答:詳見綜合筆記</h3>
+        </div>
+    </body>
+</html>

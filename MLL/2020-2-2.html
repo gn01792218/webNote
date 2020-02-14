@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <title>2020-2-2網頁學習提問筆記</title>
+    <meta chraset="UTF-8">
+    <meta name="keywords" content="網頁，筆記，提問">
+    <meta name="descrption" content="這是一個關於網頁開發的學習歷程筆記">
+    <link href="CSS/index.css" rel="stylesheet" media="all">
+</head>
+<body>
+    <img src="img/index.jpg" alt="筆記">
+    <h1>2020-2-2網頁開發學習筆記-CSS基本知識2-選擇器<br>(層次選擇器，屬性選擇棄，偽類選擇器)</h1>
+    <div>
+        <h2>綜合筆記</h2>
+        <h3>CSS層次選擇器(應該是用來配合元素標籤使用時)</h3>
+            <table>
+                <tr><th>名稱</th><th>寫法</th><th>功能</th></tr>
+                <tr><td>後代</td><td>空格:ul li{}</td><td>ul的所有後代都會被套用</td></tr>
+                <tr><td>父子</td><td>>:ul>li{}</td><td>只有ul下的li會被套用，孫子以下不會套</td></tr>
+                <tr><td>兄弟</td><td>~:div~h2{}</td><td>div下的h2都套用(不包含div本人和div上的h2)。半形的~即可，不是大的～。</td></tr>
+                <tr><td>相鄰</td><td>+:div+h2{}</td><td>只有相鄰才會套用，若div和h2之間插入一個元素標籤，則不會被套用</td></tr>
+            </table>
+        <h3>CSS屬性選擇器</h3>
+        <p>在元素後使用[ ]框框，並將屬性填入其中即可，例如填入:[class]，[id]等屬性值，具體如:div[class]{}，<br>則div元素下有class屬性的都會套用</p>
+            <table>
+                <caption>在[屬性]中加入不同符號的更多功能</caption>
+                <tr><th>使用符號</th><th>寫法</th><th>功能</th></tr>
+                <tr><td>=</td><td>div[class=box]{}</td><td>完全匹配才可套用</td></tr>
+                <tr><td>*=</td><td>div[class*=search]{}</td><td>部分有匹配就可以套用，所以會將表下語法中class名稱為search及search-bottom都一起選中</td></tr>
+                <tr><td>^=</td><td>div[class^=search]{}</td><td>起始匹配，首字為search者都會被選中，所以會將表下語法中class名稱首字有search的都選套用，即search及search-bottom都一起選中</td></tr>
+                <tr><td>$=</td><td>div[class$=search]{}</td><td>結束匹配，末字為search者會被選中，所以表下語法中只會選中class名稱末字有search者，即search和bottom-search都會套用</td></tr>
+                <tr><td>多個[]</td><td>div[class][id]{}</td><td>div元素中同時有class和id屬性者才會被選中!必須要完全符合才可以!</td></tr>
+            </table>
+        <dl><dt>範例語法(可複製使用，比較上表不同功能)</dt><dd>&lt;div&gt;aaa&lt;/div&gt;<br>&lt;div class="search" id="elem"&gt;bbb&lt;/div&gt;<br>&lt;div class="search"&gt;ccc&lt;/div&gt;<br>&lt;div class="search-bottom"&gt;ddd&lt;/div&gt;<br>&lt;div class="bottom-search"&gt;eee&lt;/div&gt;</dd></dl>
+        <h3>CSS偽類選擇器</h3>
+        <ol>
+            <li>連結偽類</li>
+                <table>
+                <tr><th>連結偽類</th><th>功能</th><th>CSS寫法範例</th></tr>
+                <tr><td>:link</td><td>未訪問前的連結顏色(為連結元素a添加超連結的顏色)</td><td>a:link{color:red}</td></tr>
+                <tr><td>:visited</td><td>訪問過的連結顏色(連結被點過後會一直呈現的顏色)</td><td>a:visited{color:red}</td></tr>
+                </table>
+            <li>使用者操作偽類</li>
+                <table>
+                <tr><th>使用者操作偽類</th><th>功能</th><th>CSS寫法範例</th><th>備註</th></tr>
+                <tr><td>:hover</td><td>鼠標移入時的顏色，移開後就沒有</td><td>div:hover{backgroundcolor:red}</td><td rowspan="2">所有標籤都可以使用!</td></tr>
+                <tr><td>:active</td><td>鼠標點擊時的顏色，放開點擊就沒有</td><td>a:visited{color:red}</td></tr>
+                </table>
+            <li>針對表單使用的偽類</li>
+                <table>
+                <tr><th>表單使用偽類</th><th>功能</th><th>CSS寫法範例</th></tr>
+                <tr><td>:focus</td><td>使輸入框被點擊時可以呈現顏色</td><td>直接在CSS中輸入:focus{background-color:red}即可使所有框都套用</td></tr>
+                <tr><td>:checked</td><td>表單中被選擇的框框(包含被設定為checked的默認選擇框)，都可套用CSS</td><td>:checked{width:100px;height:100px}<br>使用這個寫法，點選框框後會變超大。<br>**這個偽類不能設置background-color。</td></tr>
+                <tr><td>:disabled</td><td>表單中被設置為不能點選的框框會可套用CSS</td><td>:disabled{width:100px;height:100px}<br>使用這個寫法，不能點選的框框會變超大。<br>**這個偽類不能設置background-color。</td></tr>
+                </table>
+            <li>文本使用偽類</li>
+                <table>
+                <tr><th>文本使用偽類</th><th>功能</th><th>CSS寫法範例</th></tr>
+                <tr><td>:after</td><td rowspan="2">文本中使用的功能，一個添加在文本前；一個添加在文本後。<br>*使用時要加上content屬性(content:"要加入的文本"，別忘"")。<br>可做為span元素的替代方案，並有更多功能，後面會學到</td><td rowspan="2">例如原本html中有&lt;h1&gt;你好&lt;/h1&gt;<br>要在你好後加字可在CSS中輸入以下語法:<br>h1:after{content:"我不好";color:red;}</td></tr>
+                <tr><td>:before</td></tr>
+                </table>
+            <li>結構偽類</li>
+            <dl><dt>:nth-of-type(數值)</dt><dd><ul><li>( )中的數值即要選擇第幾個，填入3即選擇第3個</li><li>特殊數值效果<table><tr><th>數值</th><th>效果</th></tr><tr><td>(n)</td><td>所有都套</td></tr><tr><td>(2n)或(even)</td><td>只套用偶數</td></tr><tr><td>(2n+1)或(odd)</td><td>只套奇數</td></tr></table></li><li>其他尚有(看看就好，似乎用不太到?)<table><tr><th>語法</th><th>效果</th></tr><tr><td>:first-of-type<br>或:last-of-type</td><td>只套用第一個<br>或最後一個</td></tr><tr><td>:only-of-type</td><td>只有一個時才套用</td></tr></table></li></ul></dd></dl>
+            <p>以上:nth-of-type的用法，可以使用下列這段html語法來練習:<br>&lt;ul&gt;<br>&lt;li&gt;&lt;/li&gt;<br>&lt;li&gt;&lt;/li&gt;<br>&lt;li&gt;&lt;/li&gt;<br>&lt;li&gt;&lt;/li&gt;<br>&lt;/ul&gt;<br>**例如想要讓第三個li套用CSS，則CSS中寫法為:li:nth-of-type(3){}</p>
+            <p>*PS:另一個:nth-child()功能和這個類似，差別在於，當li中加入一個其他元素標籤(例如p)時，就會有差異:<br>&lt;ul&gt;<br>&lt;li&gt;&lt;/li&gt;<br>&lt;li&gt;&lt;/li&gt;<br>&lt;p&gt;&lt;/p&gt;<br>&lt;li&gt;&lt;/li&gt;<br>&lt;li&gt;&lt;/li&gt;<br>&lt;/ul&gt;</p>
+            <table><tr><th>結構偽類語法</th><th>偽類的運作方式</th><th>備註</th></tr><tr><td>:nth-of-type()</td><td>只計算li標籤</td><td>若寫li:nth-of-type(3){background-color:red}<br>只計算li標籤，所以是第四行的li才會套用紅色</td></tr><tr><td>:nth-child()</td><td>會把所有標籤都列入計算</td><td>若寫li:nth-child(3){background-color:red}<br>則不會有任何東西顯示紅色，因為child計算整個標籤，算到第三個是p而不是li，故不會套用</td></tr></table>
+        </ol>
+    </div>
+    <div>
+        <h2>提問筆記</h2>
+        <ul>
+            <li>1.試試把一個input文字輸入框，弄成當鼠標懸停其上時，框框變大，框內被景色也變成紅色，要怎麼寫?</li><input type="text">
+            <li>2.在不想使用id和class的情況下，把ul下的第三行li背景弄成紅色</li><input type="text">
+            <li>3.在不使用id和class的情況下，把ul下所有li背景弄成紅色</li><input type="text">
+            <li>4.在不使用nth-of-type()和nth-child()的情況下，把所有ul下的li加上紅色5px的邊框</li><input type="text">
+            <li>5.在一個ul下的任一li下再設置一個ol，並且只讓ul的li有紅色5px的邊框</li><input type="text">
+            <li>6.設計一個ul下有6個li，並且只有第2~第5個li有紅色5px邊框</li><input type="text">
+            <li>複習以上綜合筆記</li>
+            
+        </ul>
+    </div>
+    <div>
+        <h2>解答區</h2>
+        <p>1.input[type]:hover{background-color:red;width: 100px;height: 100px;}<br>此練習運用了屬性選擇器和偽類選擇器</p>
+        <p>2.使用li:nth-of-type(3){background-color:red;}</p>
+        <p>3.使用li:nth-of-type(n){background-color:red;}</p>
+        <p>4.使用ul li{border:red 5px solid}</p>
+        <p>5.使用ul>li{border:red 5px solid}</p>
+        <p>6.CSS中寫li~li[class=b]{border:red 5px solid}；記得html中的第2~5個li要加上class="b"屬性<br>此答為加強練習運用了兄弟選擇器和屬性選擇器，故使用li[class=b]，實則此屬性可用更優化寫法，即.b即可。</p>
+    </div>
+</body>
+</html>

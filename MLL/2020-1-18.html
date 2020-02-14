@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-W">
+    <head>
+        <title>網頁開發學習筆記</title>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="網頁開發，學習，提問，筆記">
+        <meta name="desciption" content="這是一個利用實際例子提問學習的學習網站">
+        <link href="CSS/index.css" rel="stylesheet" media="all">
+    </head>
+    <body>
+        <img src="img/index.jpg" height="300" width="700" alt="筆記">
+        <h1>2020/1/18網頁開發筆記table和form</h1>
+        <h2>綜合筆記</h2>
+            <h3>1.table基本</h3>
+             <img src="img/table.png" height="750" width="650" alt="table的基本架構">
+        <dl><dt>**上圖表格的語法</dt><dd>&lt;table&gt;<br>&lt;caption&gt;Html中table元素基本框架&lt;caption&gt;<br>&lt;tr&gt;<br>&lt;th&gt;日期&lt;/th&gt;<br>&lt;th&gt;內容&lt;/th&gt;<br>&lt;th&gt;備註&lt;/th&gt;<br>&lt;/tr><br>&lttr&gt;<br>&lt;td&gt;2020/1/18&lt;/td&gt;<br>&lttd&gt;Table和form&lt;/td&gt;<br>&lt;td&gt;測試用&lt;/td&gt;<br>&lt;/tr&gt;<br>&lt;/table&gt;<br>以上寫法完成後，並不會看到邊框(詳細邊框設定可以在CSS使用)</dd></dl>
+        <h3>2.form基本</h3>
+        <ul>
+            <li>在form中最常用的空元素input，有哪些實用的type屬性值呢?如下表:<br>
+                <table>
+                    <tr><th>type屬性值</th><th>功能</th></tr>
+                    <tr><td>text</td><td>可以輸入文字</td></tr>
+                    <tr><td>password</td><td>可以輸入密碼</td></tr>
+                    <tr><td>file</td><td>可以上傳文件</td></tr>
+                    <tr><td>submit</td><td>送出按鈕</td></tr>
+                    <tr><td>reset</td><td>重填按鈕</td></tr>
+                    <tr><td>radio</td><td>單選框框</td></tr>
+                    <tr><td>checkbox</td><td>複選框框</td></tr>
+                </table>
+            </li>
+            <li>如果要把這些填寫完成的資料傳送到某個地方就使用action的屬性設定即可，例如:&lt;form action="位址"&gt;</li>
+            <li>加入placeholder屬性就可以有提示文字出現(再輸入值後會自動消失)</li>
+            <li><strong>其他常用元素</strong>:<br>
+                <p>1.多行文本框:&lt;textarea&nbsp;cols="橫列數值"&nbsp;rows="直欄數值"&gt;文本框標題文字&lt;textarea&gt;</p><br>
+                <dl><dt>2.下拉式選單:</dt><dd>&lt;select&gt;<br>&lt;option&gt;選項A&lt;/option&gt;<br>&lt;option&gt;選項B&lt;/option&gt;<br>&lt;/select&gt;</dd></dl>
+            </li>
+        </ul>
+        <h1>提問筆記</h1>
+            <h2>table基本提問</h2>
+            <ul>
+                <li>如何做一個表格，和綜合筆記中的table標題相反?(呈現在直欄中)</li>
+                <li>如何把橫列合併?</li>
+                <li>如何把直欄合併?</li>
+                <li>如何把文字左右對齊?上下對齊?</li>
+                <li>如何同時把所有想要的欄位文字同時對齊，而不用一個一個調?要加入那些表格的語意標籤?</li>
+                <li>我要如何讓file屬性上傳檔案時，可以選多個檔案</li>
+            </ul>
+            <h2>form基本提問</h2>
+            <ul>
+                <li>為何用radio單選時，每個選項都還是可以被選擇?!怎麼處理呢?</li>
+                <li>要如何在單選複選選框中設置默選的選項呢?</li>
+                <li>那在下拉選單中，如何設置默認的選項呢?</li>
+                <li>我把下拉選單第一個選項設置為"請選擇"，並且已設成默認值，但我只想要他是一個提示作用，不想他被選中，要怎麼辦呢?</li>
+                <li>要做一個一次把所有選項都顯示出來的選單要怎麼用呢?像這樣的效果:<select size="3"><option>A</option><option>B</option><option>C</option></select></li>
+                <li>像上面那樣顯示出來後，我想要可以複選也能辦到嗎?像這樣:<select size="3" multiple><option>A</option><option>B</option><option>C</option></select>(按CTRL或用屬標拖選就可以複選)</li>
+            </ul>
+        <h1>綜合練習區</h1>
+        <h1>解答成果區</h1>
+            <h2>table解答</h2>
+            <ul>
+                <li>合併橫列在tr中使用colspan，如&lt;tr colspan="2"&gt;就會將2列合併。(注意:只要打在第一列的tr中即可,被合併的那一列tr完全不用打出來,否則會多一列</li>
+                <li>合併直欄在td中使用rowspan，如&lt;td rowspan="2"&gt;就會將2欄合併。(注意:只要打在第一欄td中即可,被合併的那一欄td完全不用打出來,否則會多一欄</li>
+                <p>**例如:下表格中要合併中間的那3欄，只要在第一欄的td中打rowspan即可</p>
+                <table>
+                    <tr><td></td><td rowspan="3"></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                </table>
+                <dl><dt>寫法如下:</dt><dd>
+                    &lt;table border&gt;<br>
+                    &lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td rowspan="3"&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;<br>
+                    &lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gtl;&lt;/tr&gt;<br>
+                    &lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gtl;&lt;/tr&gt;<br>
+                &lt;/table&gt;
+                    </dd></dl>
+                <li>如何對齊文字?在想對齊的tr或th或td中輸入align="對齊方式"。例如:&lt;tr <strong>align="left"</strong>&gt;</li>
+                <p>上面align是左右對齊;上下對齊的屬性是valign</p>
+                <li>這時候就可以使用&lt;tHead&gt;或者&lt;tBody&gt;和&lt;tFood&gt;語意標籤</li>
+                <li>加入multiple即可</li>
+            </ul>
+            <h2>form解答</h2>
+            <ul>
+                <li>單選卻發生可以複選的原因是沒有設定name屬性，所以每個單選元素都會被當成單一個體，當然都自帶一個可以選擇的框囉!要避免這種情況，請做如下設置:<br>
+                    &lt;input type="radio" <strong>name="1"</strong>&gt;男<br>&lt;input type="radio" <strong>name="1"</strong>&gt;女<br>**即name屬性的值要是一致的才會被認作是同一組，只能做出一個選擇。
+                </li>
+                <li>在input元素中加入checked則該選項即會被作為默認勾選。</li>
+                <li>在想被選中的那個option元素中輸入selected即可。</li>
+                <li>輸入disabled即可!你就會得到這個功能:<select><option selected disabled>請選擇</option><option>披薩</option><option>蛋塔</option></select></li>
+                <p>語法:&lt;select&gt;&lt;option selected <strong>disabled</strong>&gt;請選擇&lt;/option&gt;&lt;option&gt;披薩&lt;/option&gt;&lt;option&gt;蛋塔&lt;/option&gt;&lt;/select&gt;</p>
+                <li>只要在select元素中加入size="要顯示的數量"即可，記得是select哦select select select很重要說三次。</li>
+                <li>加入multiple就可以得到多選功能，這個功能在input元素中的file屬性更好用，可以讓上傳者多選多個檔案</li>
+            </ul>
+      
+    </body>
+</html>

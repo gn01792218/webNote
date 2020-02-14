@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+    <head>
+        <title>2020-2-8網頁開發筆記</title>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="網頁，筆記">
+        <meta name="decription" content="這是一個網頁開發的學習歷程筆記">
+        <link href="CSS/index.css" rel="stylesheet" media="all">
+        
+    </head>
+    <body>
+        <h1>2020-2-8CSS基本知識3-標籤種類及嵌套規範,display，overflow,透明度與滑鼠樣式，最大最小寬高，CSS默認樣式</h1>
+        <div>
+            <h2>綜合筆記</h2>
+            <h3>1.標籤種類及嵌套規範</h3>
+                <h4>標籤種類的劃分</h4>
+                <h5>按標籤分類</h5>
+                <Ul>
+                    <li><dl><dt>block區塊元素:</dt><dd>獨佔一整行；支持所有樣式(如背景等);不寫width時，預設值是和父元素同(未嵌套下即瀏覽器寬度，嵌套關係下就繼承父元素)</dd></dl></li>
+                    <li><dl><dt>inline內行元素:</dt><dd>左右排列，且緊連在一起(想要有空隙，則換行寫即可);非支持所有樣式(不支持寬高設置)；寬度是由內容長度來撐開</dd></dl></li>
+                    <li>inline-block:上者的強化版，可支持寬高，且不會被覆蓋</li>
+                </Ul>
+                <table>
+                    <caption>各種分類的代表</caption>
+                    <tr><th>分類</th><th>代表標籤</th></tr>
+                    <tr><td>block元素</td><td>如:div,p,ul,li,h1......</td></tr>
+                    <tr><td>inline元素</td><td>如:span,em,strong......</td></tr>
+                    <tr><td>inline-block元素</td><td>如:input,select......</td></tr>
+                </table>
+                <h5>按顯示分</h5>
+                <Ul>
+                    <li><dl><dt>替換元素:</dt><dd>如:img,input等(需要加入屬性後才可操作)</dd></dl></li>
+                    <li><dl><dt>非替換元素:</dt><dd>如:h1(只要有標籤就可作用)</dd></dl></li>
+                </Ul>
+                
+                <h4>標籤嵌套規範</h4>
+                <ul>
+                    <li>block內可以放入inline；相反則不能，但有特例:a內可以加入div或圖片</li>
+                    <li>black之間不一定可以互相嵌套(大部分可):例如P內不能放div</li>
+                </ul>
+            <h3>2.顯示框類型(display)</h3>
+            <p>display的顯示框樣式有很多種，在此介紹四種基本款:</p>
+            <ol>
+                <li>block:顯示框一次會占用一整行的空間，呈上下排列。寫法:span{display:blocks}</li>
+                <li>inline:顯示框可以左右水平排列，但可能會被別的區塊覆蓋。寫法:div{display:inline}</li>
+                <li>inline-block:是上者的更強大功能，不只可以使區塊水平排列，且不會被別的區塊覆蓋(有block獨佔的效果)。寫法:div{display:inline-block}</li>
+                <li>none:消失，什麼都沒有了。不知道要幹嘛?!</li>
+                
+            </ol>
+            <img src="img/display_inline-block.png" alt="inline-block的妙用">
+            <a href="https://www.webtech.tw/info.php?tid=CSS_display%3Ainline-block_%E5%8F%AF%E8%A8%AD%E5%AE%9A%E5%8D%80%E5%A1%8A%E5%AF%AC%E5%BA%A6%E8%88%87%E9%AB%98%E5%BA%A6">關於inline和inline-block的差別參考網站</a>
+            <h3>3.溢出隱藏(overflow)</h3>
+            <p>**以下展示，每個div內都放入5個單詞，並設置不同的overflow效果，以供查看</p>
+            <div class="box" id="overflow-v">visiable visiable visiable visiable visiable</div>
+            <div class="box" id="overflow-h">hidden hidden hidden hidden hidden</div>
+            <div class="box" id="overflow-s">scroll scroll scroll scroll scroll</div>
+            <div class="box" id="overflow-a">auto auto auto auto auto auto</div>
+            <div class="box" id="overflow-xy">XY軸</div>
+            <ul>
+                <li>hidden效果:把一個超出的hidden隱藏了</li>
+                <li>scroll效果:總是顯示右邊和下面的兩條滾條</li>
+                <li>auto效果:滾條只會出現在當內容超出時(且只會出現右滾條)，平常沒超出時看起來和hidden是一樣的</li>
+                <li>XY軸的設置:<table><tr><th>選擇的軸</th><th>效果和寫法</th><th>備註</th></tr><td>X軸</td><td>為X軸設置滾條；overflow-x:scroll</td><td>X軸即為下滾條<br><strong>此例只有使用X軸設置，故只有下滾條</strong></td><tr><td>Y軸</td><td>為Y軸設置滾條;overflow-y:auto</td><td>即右滾條,輸入auto和scroll都行<br>(因S本來就包含兩條)。<br>本例子無添加Y軸設置</td></tr></table></li>       
+            </ul>
+            <h4>4.透明度</h4>
+                <ul>
+                    <li>不透明度opacity:值0~1，0為透明(即整個區塊不見，但依然佔空間)；1為不透明</li>
+                    <div class="box" id="opacity0">透明度opacity:0.1</div> <div class="box" id="opacity02">透明度opacity:0.2</div> <div class="box" id="opacity05">透明度opacity:0.5</div> <div class="box" id="opacity1">透明度opacity:1</div>
+                    <p>以上共設置了4個div並設置其不透明度值從0，0.2，0.5，1，供觀看其透明效果</p>
+                    <p>**注意:元素的內容(如文字)也跟著一起透明變化哦!；另外，這也可以作用在P或者img等地上面唷!多多嘗試吧!</p>
+                    
+                    <li>rgba調整透明度:若要使內容不跟著一起透明，則要用到rgba的a值</li>
+                    <div class="box" id="rgba0">寫法:{background:rgba(0,0,0,0.1)}</div> <div class="box" id="rgba02">寫法:{background:rgba(0,0,0,0.2)}</div> <div class="box" id="rgba05">寫法:{background:rgba(0,0,0,0.5)}</div> <div class="box" id="rgba1">寫法:{background:rgba(0,0,0,1)}</div>
+                    
+                </ul>
+            <h4>5.鼠標樣式</h4>
+                <ul>
+                    <li>cursor樣式的設置</li>
+                    <table>
+                        <caption>cursor的樣式(都是當鼠標移入設定的區域時才會變化)</caption>
+                        <tr><th>種類</th><th>功能與寫法</th></tr>
+                        <tr><td>default</td><td>默認箭頭樣式</td></tr>
+                        <tr><td>pointer</td><td>手的樣式</td></tr>
+                        <tr><td>move</td><td>四方箭頭的樣式</td></tr>
+                        <tr><td>help</td><td>帶問號的箭頭樣式</td></tr>
+                    </table>
+                    <p>**自訂箭頭樣式:{cursor:url(檔案地址),auto;}</p>
+                    <p>注意:鼠標的圖檔只接受cur及ico格式；若要使用ani動態的鼠標檔案，必須貼上網站的網址才行</p>
+                    <p class="cursor" id=default"">移進看default箭頭樣式<br>滑動看語法<br>語法:{cursor:default}</p>
+                    <p class="cursor" id="pointer">移進看pointer手手樣式<br>滑動看語法<br>語法:{cursor:pointer}</p>
+                    <p class="cursor" id="move">移進看move四方箭頭樣式<br>滑動看語法<br>語法:{cursor:move}</p>
+                    <p class="cursor" id="help">移進看help箭頭帶問號樣式<br>滑動看語法<br>語法:{cursor:help}</p>
+                    <p class="cursor" id="custom">移進看自訂樣式<br>滑動看語法<br>語法:{cursor:url(地址),auto;}</p>
+                    <p><a href="http://www.cursors-4u.com/cursor/2011/12/15/corgi.html">本例子使用動態鼠標，網址點此，可以選擇多種動態鼠標唷!</a></p>
+                </ul>
+            <h4>6.最大最小寬高</h4>
+                <p>一般來說像div這樣的區塊設置寬高後，內容會有溢出的情況，若設定了最大最小寬高，框框就會以最大最小直來自動調整</p>
+                <p>例如:設置{max-height:200px}，則此塊內容自動調整的方式為:最大只會到200px，當內容少於200px時，框框會自動縮小；當內容大於200px時，則會溢出。</p>
+                <p>例如:設置{min-height:200px}，則此塊內容自動調整方式為:框框最小值都有200px，內容少於200時不會變更小；但當內容多於200時，就會直接撐開不會溢出</p>
+            <h4>7.CSS的默認樣式</h4>
+                <p>CSS有很多東西都是有默認值的，而有時這可能造成後續開發的影響，也可能有瀏覽器的適應問題，所以有人會在CSS開始編寫之前先使用CSSreset的解決方案</p>
+                <table>
+                    <caption>CSS中可能影響後續開發的默認樣式</caption>
+                    <tr><th>元素</th><th>默認樣式</th></tr>
+                    <tr><td>body</td><td>有margin的默認值</td></tr>
+                    <tr><td>h1~h6</td><td>有margin的上下默認值，粗體默認</td></tr>
+                    <tr><td>p</td><td>有margin的上下默認值</td></tr>
+                    <tr><td>ul</td><td>有margin的上下默認值，padding左邊默認值，首飾樣式(list-style:disc)</td></tr>
+                    <tr><td>a</td><td>鼠標為手型，連結帶底線，且是藍色</td></tr>
+                    <tr><td>img</td><td>是inline的排列方式</td></tr>
+                </table>
+            <dl><dt>常用的解決方案</dt><dd><ul><li>*{margin:0;padding:0}或body,h1,p,ul{margin:0;padding:0}</li><li>ul{list-style:none;}</li><li>a{text-decoration:none;color:#666}</li><li>img{display:block}</li></ul></dd></dl>
+            <p>總地來說，當在寫一個網頁時，順序應該是:1.寫結構-->2.重置CSS樣式-->3.CSS具體編寫</p>
+        </div>
+        <div>
+            <h2>練習區</h2>
+        </div>
+        <div>
+            <h2>解答區</h2>
+        </div>
+    </body>
+</html>
