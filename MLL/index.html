@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+    <head>
+        <title>我的網頁開發學習筆記</title>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="網頁，筆記">
+        <meta name="description" content="我的網頁開發學習日誌，與提問筆記">
+        <link href="CSS/index.css" rel="stylesheet" media="all">
+    </head>
+    <body>
+        <section>
+        <img src="img/index.jpg" height="300" width="700" alt="筆記" title="幹，點三小">
+        </section>
+        <div>
+        <h1>2020/1/12網頁開發筆記Html基本架構</h1>
+            <h2>綜合筆記</h2>
+            <ul>
+                <li>在html中標示使用語言為繁中，只要寫lang="zh-TW即可</li>
+                <li>想要加入不想顯示在網頁上的個人註解，請用&lt;!--輸入文字--&gt;標籤</li>
+                <li>運用特殊符號就可以在HTML語法中打出&lt;,&gt;或&copy;...等，規則為&+屬性+;。(例如:& copy ;=>&copy;)，常用特殊符號表如下:<br>
+                    <table>
+                        <tr>
+                            <th>特殊符號</th><th>語法</th>
+                        </tr>
+                        <tbody align="center">
+                            <tr><td>&lt;</td><td>&amp;lt;</td></tr>
+                            <tr><td>&gt;</td><td>&amp;gt;</td></tr>
+                        <tr><td>&copy;</td><td>&amp;copy;</td></tr>
+                        <tr><td>&amp;</td><td>&amp;amp;</td></tr>
+                        <tr><td>空白格</td><td>&amp;nbsp;</td></tr>
+                        </tbody>
+                    </table>
+                </li>
+                <li>文本修飾標籤有:strong，em，sub，sup，del，ins等，下表介紹其功能</li>
+                    <table>
+                        <tr>
+                            <th>標籤</th>
+                            <th>功能</th>
+                        </tr>
+                        <tr>
+                          <td>&lt;strong&gt;&nbsp;&nbsp;&lt;/strong&gt;</td>
+                            <td>使字體<strong>變粗</strong></td>
+                        </tr>
+                         <tr>
+                          <td>&lt;em&gt;&nbsp;&nbsp;&lt;/em&gt;</td>
+                            <td>使字體<em>變斜體</em></td>
+                        </tr>
+                        <tr>
+                          <td>&lt;del&gt;&nbsp;&nbsp;&lt;/del&gt;</td>
+                            <td>使字體有<del>刪除</del>符號</td>
+                        </tr>
+                        <tr>
+                          <td>&lt;ins&gt;&nbsp;&nbsp;&lt;/ins&gt;</td>
+                            <td>可以<ins>插入文本</ins>(下方會有線)</td>
+                        </tr>
+                        <tr>
+                          <td>&lt;sub&gt;&nbsp;&nbsp;&lt;/sub&gt;</td>
+                            <td>下文本，可以打出水元素H<sub>2</sub>O</td>
+                        </tr>
+                        <tr>
+                          <td>&lt;sup&gt;&nbsp;&nbsp;&lt;/sup&gt;</td>
+                            <td>上文本，可以打出2的平方-->2<sup>2</sup></td>
+                        </tr>
+                    </table>
+                <!--以上這一個文本修飾標籤，可能可以在CSS中也有一些實現，知道即可-->
+                <li><dl><dt>定義元素(dl)的使用方式如下:</dt><dd>&lt;dl&gt;<br>&lt;dt&gt;定義標題:&lt;/dt&gt;&lt;dd&gt;內容文字&lt;/dd&gt;<br>&lt;/dl&gt;</dd></dl></li>
+            </ul>
+        </div>
+        <div>
+        <h1>網頁開發提問筆記</h1>
+            <h2>HTML中Head和Body的基本架構和常用元素</h2>
+            <h3>關於head區塊的撰寫</h3>
+            <ul><li>html標籤中標示使用語言為繁中要怎麼寫?</li><li>如何使用meta標籤?共有幾個重要的內容?</li><li>載入CSS的語法為何?</li></ul>
+            <h3>關於body內的各種元素</h3>
+            <ul><li>如何使用超連結:頁內?頁外?站外?</li><li>如何使用插入圖片?並且指標移到圖上時有文字提示?</li><li>如何插入表格，並加入可輸入等功能?</li></ul>
+            <h3>其他實用技巧</h3>
+            <ul><li>如何打出特殊符號?有哪些常用符號?</li><li>如何把文字變斜體?加入刪除符號?打出平方號?還有其他什麼文本修飾標籤?</li><li>如何打出定義有定義的文字，例如:定義文字。</li></ul>
+            <a href="#p1">2020/1/12練習題</a>
+            <a href="#A1">2020/1/12解答</a><br>
+        </div>
+        <div>
+        <img src="img/practice.jpg" height="250" width="500" alt="刻意練習，成就非凡">
+        <h1>綜合練習區</h1>
+            <h2>2020/1/12練習</h2>
+            <form>
+                <table id="p1">
+                    <tr><th>標為繁中的寫法</th><td><input type="text" name="zh-TW"></td></tr>
+                    <tr><th>萬國碼的寫法</th><td><input type="text" name="UTF-8"></td></tr>
+                    <tr><th>網頁關鍵字寫法</th><td><input type="text" name="keywords"></td></tr>
+                    <tr><th>網頁描述的寫法</th><td><input type="text" name="disciption"></td></tr>
+                    <tr><th>載入CSS的寫法</th><td><input type="text" name="link"></td></tr>
+                    <tr><th>超連結寫法</th><td><input type="text" name="a"></td></tr>
+                    <tr><th>插入圖片的寫法</th><td><input type="text" name="imgsrcalt"></td></tr>
+                    <tr><th>插入表格的寫法</th><td><input type="text" name="table"></td></tr>
+                    <tr><th>特殊符號的寫法</th><td><input type="text" name="table"></td></tr>
+                    <tr><th>文本修飾標籤有哪些</th><td><input type="text" name="table"></td></tr>
+                    <tr><th>定義元素如何使用</th><td><input type="text" name="table"></td></tr>
+                </table>
+            </form>
+            <img src="img/gogo.jpg" height="150" width="200" alt="加油!">
+        </div>
+        <div>
+        <h1>解答區</h1>
+            <h2>2020/1/12解答</h2>
+             <form>
+                <table id="A1">
+                    <tr><th>標為繁中的寫法</th><td>&lt;html lang="zh-TW"&gt;</td></tr>
+                    <tr><th>萬國碼的寫法</th><td>&lt;meta charset="UTF-8"&gt;;utf-8也可</td></tr>
+                    <tr><th>網頁關鍵字寫法</th><td>&lt;meta name=keywords content="關鍵字1,關鍵字2"&gt;(用逗號區別幾個關鍵字)</td></tr>
+                    <tr><th>網頁描述的寫法</th><td>&lt;meta name="description" content="巴拉巴拉......"&gt;</td></tr>
+                    <tr><th>載入CSS的寫法</th><td>&lt;link href="位址" rel="stylesheet" media="all"&gt;</td></tr>
+                    <tr><th>超連結的寫法</th><td><!--使用a為頭尾標籤，內容為href="位址"；若為頁內則使用#接要去的id(記得在要去的區塊設id="")；頁外及站外直接踢上連結-->&lt;a href="位址"&gt;頁內則在href中使用#作開頭+要去的id</td></tr>
+                    <tr><th>插入圖片的寫法</th><td>&lt;img src="圖片位址" alt="圖片描述" height="數字" width="數字"&gt;(若要加入鼠標提示，再輸入title="提示"即可)</td></tr>
+                    <tr><th>插入表格的寫法</th><td>首尾標籤table，橫為tr,直為td,作為標題th(和td及tr是同樣)</td></tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>
